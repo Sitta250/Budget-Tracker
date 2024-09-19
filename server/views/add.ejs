@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang = "en">
+<%- include('./partials/head.ejs')%>
+
+
+<body>   
+    <div class = "content page-add">
+    <form method="POST">
+        <div class="add-frame spending-info">
+            <div class="add-label">
+            <label for = "description">
+                Your spending info: 
+            </label>
+            </div>
+            <input type = "text" id = "description" name = "description" placeholder = "Enter the info of your spending" size="30" required>
+        </div>
+        <div class="add-frame amount">
+            <div class="add-label">
+                <label for = "amount">
+                    Amount: 
+                </label>
+            </div>
+            <input type = "number" id = "amount" name = "amount" placeholder = "Enter the amount of spending"  required>
+        </div>
+        <div class="add-frame dropdown">
+            <div class="add-label">
+                <label for = "cat">Choose a categories:</label>
+            </div>  
+                <select id = "cat" name = "cat">
+                    <option value = "groceries">Groceries</option>
+                    <option value = "shopping">Shopping</option>
+                    <option value = "goingout">Going out</option>
+                    <option value = "others">Others</option>
+                </select>
+            
+            
+        </div>
+        <div class="submit-btn">
+            <input type = "submit">
+        </div>
+        
+    </form>
+    </div> 
+    <%- include('./partials/footer.ejs')%>
+</body>
+
+</html>
