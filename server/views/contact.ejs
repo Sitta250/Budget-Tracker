@@ -3,11 +3,68 @@
 <%- include('./partials/head.ejs')%>
 
 
-<body>    
-    <div class="content page-insert">
-        <p>contacting page</p>
+<body>   
+    <div class="content-connect">
+    <div class="container-connect">
+        <div class="title-connect">
+            <h1>Connect with us</h1>
+            <p>feel free to send your respond and question</p>
+        </div>
+        
+        <div class="contact-box">
+            <div class="contact-left">
+                <h3>send your request</h3>
+                <form action="/contact" method="POST">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <div class="connect-label">
+                                <label for="name">Name</label>
+                            </div>
+                            <input type="text" name="name" placeholder="FirstName LastName" required>
+                        </div>
+                        <div class="input-group">
+                            <div class="connect-label">
+                                <label for="phone">Phone</label>
+                            </div>
+                            <input type="tel" name="phone" placeholder="+1 xxxxxxxxxx" required>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <div class="connect-label">
+                                <label for="email">Email</label>
+                            </div>
+                            <input type="email" name="email" placeholder="youremail@budget.com" required>
+                        </div>
+                        <div class="input-group">
+                            <div class="connect-label">
+                                <label for="subject">Subject</label>
+                            </div>
+                            <input type="text" name="subject" placeholder="....." required>
+                        </div>
+                    </div>
+                    <label for="message">Message</label>
+                    <textarea name="message" rows="5" placeholder="your message..." required></textarea>
+                    <button type="submit">SEND</button>
+                </form>
+            </div>
+            <div class="contact-right ">
+                <h3>reach us</h3>
+                <table>
+                    <tr>
+                        <td>Email</td>
+                        <td>contactbudget@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td>+49 123 456 7890</td>
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
     </div>
-    <%- include('./partials/footer.ejs')%>
-
+    <%- include('./partials/footer.ejs')%> 
+</div>
 </body>
 </html>

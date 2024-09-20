@@ -1,24 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang = "en">
 <%- include('./partials/head.ejs')%>
 
-<body>    
-    <div class="content page-history">
-        <%if(show.length > 0){%>
-        <% show.forEach(record => { %>
-            <div class="history-list">
-                <h2>Spending: <%= record.description %></h2>
-                <p>Amount: <%= record.amount %></p>
-                <p>Category: <%= record.cat %></p>
-                <p>Date: <%= record.createdAt.toString() %></p>
-            </div>
-        <% }) %>
-        <%} else{%>
-            <p>You don't have any spending history...</p>
-        <%} %>
+<body>   
+    <div class="history-content">
+    <div class="history-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (show.length > 0) { %>
+                    <% show.forEach(function(record) { %>
+                        <tr>
+                            <td><%= record.description %></td>
+                            <td>$<%= record.amount.toFixed(2) %></td>
+                            <td><%= record.cat %></td>
+                            <td><%= record.createdAt.toDateString() %></td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="4">No spending history found.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
     </div>
     
     <%- include('./partials/footer.ejs')%>
-
+</div> 
 </body>
 </html>

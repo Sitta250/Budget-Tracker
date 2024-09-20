@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Record = require('./model/blog')
+const Record = require('./model/blog');
+const Contact = require('./model/contact');
 
 const app = express();
 app.use(express.static('public'));
@@ -23,9 +24,9 @@ app.get('/',(req,res)=>{
 app.get('/add',(req,res)=>{
     res.render('add',{title: 'Add Record'});
 })
-app.get('/history',(req,res)=>{
-    res.render('history',{title: 'Spending History'});
-})
+// app.get('/history',(req,res)=>{
+//     res.render('history',{title: 'Spending History'});
+// })
 app.get('/update',(req,res)=>{
     res.render('update',{title: 'Updating Information'});
 })
@@ -40,6 +41,16 @@ app.post('/add',(req, res)=>{
     newRecord.save()
        .then((result)=>{
            res.redirect('/add');
+       })
+       .catch((err)=>{
+           console.log(err);
+       })
+})
+app.post('/contact',(req, res)=>{
+    const newContact = new Contact(req.body);
+    newContact.save()
+       .then((result)=>{
+           res.redirect('/contact');
        })
        .catch((err)=>{
            console.log(err);
@@ -62,8 +73,7 @@ app.post('/add',(req, res)=>{
 app.get('/history', (req, res) => {
     Record.find().sort({ createdAt: -1 })
         .then((result) => {
-            res.render('history', { show: result, title: 'Spending history' });
-        })
+            res.render('history', { show: result, title: 'Spending history' });        })
         .catch((err) => {
             console.log(err);
         });
