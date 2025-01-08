@@ -2,17 +2,38 @@
 <html lang="en">
 <%- include('./partials/head.ejs')%>
 
-
 <body>   
     <div class="page-home ">
+        <!-- Latest spending section -->
         <div class="home-box homeInfo hb1">
             <p>Latest Action:</p>
+            <% if (record) { %>
+                <div class="home-info">
+                    <div>Info: <%= record.description %></div>
+                    <div>Amount: €<%= record.amount %></div>
+                    <div>Category: <%= record.cat %></div>
+                    <div>Date: <%= record.createdAt.toLocaleString('en-GB', { timeZone: 'Europe/Berlin', dateStyle: 'medium', timeStyle: 'medium' }) %></div>
+                </div>
+            <% } else { %>
+                <h2>No spending found</h2>
+            <% } %>
         </div>
+
+        <!-- Total spending section -->
         <div class="home-box homeInfo hb2">
-            <p>Total Spending</p>
+            <p>Total Spending:</p>
+            <div class="home-info">
+                <div>Total: €<%= totalSpending %></div>
+            </div>
         </div>
+        
         <div class="home-box homeInfo hb3">
-            <p>Spending in categories</p>
+            <p>Spending in Categories:</p>
+            <div class="home-info">
+                <% categoryTotals.forEach(category => { %>
+                    <div><%= category._id %>: €<%= category.total %></div>
+                <% }) %>
+            </div>
         </div>
     </div> 
     <%- include('./partials/footer.ejs')%>
